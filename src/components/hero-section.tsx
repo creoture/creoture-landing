@@ -60,7 +60,7 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden min-[300px]:mt-28 min-[450px]:mt-16 sm:mt-0"
       data-testid="section-hero"
     >
       <div className="absolute inset-0 overflow-hidden">

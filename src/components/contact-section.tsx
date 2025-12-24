@@ -88,6 +88,29 @@ export function ContactSection() {
     },
   });
 
+  const onSubmit = async (data: InsertContact) => {
+    const formData = new FormData();
+    formData.append("form-name", "contact");
+
+    // Append all fields
+    Object.keys(data).forEach((key) => {
+      const value = data[key as keyof InsertContact] || "";
+      formData.append(key, value);
+    });
+
+    try {
+      await fetch("/", { method: "POST", body: formData });
+      toast({
+        title: "Message Sent!",
+        description:
+          "Thank you for contacting us. We'll get back to you shortly.",
+      });
+      form.reset();
+    } catch (error) {
+      toast({ title: "Error", description: "Something went wrong." });
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -125,13 +148,7 @@ export function ContactSection() {
                 method="POST"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
-                onSubmit={form.handleSubmit(() => {
-                  toast({
-                    title: "Message Sent!",
-                    description: "Thank you for contacting us. We'll get back to you shortly.",
-                  });
-                  form.reset();
-                })}
+                onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-5"
               >
                 <input type="hidden" name="form-name" value="contact" />
@@ -248,7 +265,7 @@ export function ContactSection() {
                   data-testid="button-submit-contact"
                 >
                   <Send className="mr-2 h-5 w-5" />
-                    Send Message
+                  Send Message
                 </Button>
               </form>
             </Form>
