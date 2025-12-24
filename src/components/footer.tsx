@@ -53,10 +53,7 @@ export function Footer() {
               className="inline-flex items-center gap-2 mb-4"
               data-testid="link-footer-logo"
             >
-              <span className="text-2xl font-bold">
-                <span className="text-[#f17026]">Creo</span>
-                <span className="text-[#004aad]">ture</span>
-              </span>
+              <img src="/logo.png" alt="Creoture Smart Solutions Crafted for Tomorrow" />
             </a>
             <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
               Smart Solutions. Crafted for Tomorrow.

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
-// import { logo } from "./public/logo.png";
 
 const navLinks = [
   { href: "#services", label: "Services" },
@@ -43,20 +42,17 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
+        <div className="flex items-center justify-between h-22 gap-4">
           <a
             href="#"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 p-2"
             data-testid="link-logo"
           >
-            <span className="text-2xl font-bold">
-              <span className="text-[#f17026]">Creo</span>
-              <span className="text-[#004aad]">ture</span>
-            </span>
+            <img src="/logo.png" alt="Creoture Smart Solutions Crafted for Tomorrow" />
           </a>
 
           <div className="hidden md:flex items-center gap-6">
