@@ -25,7 +25,6 @@ import { insertContactSchema, type InsertContact } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
 import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
 import { SiFacebook, SiInstagram, SiThreads } from "react-icons/si";
-import emailjs from "@emailjs/browser";
 
 const services = [
   "Website Design & Development",
@@ -89,63 +88,6 @@ export function ContactSection() {
     },
   });
 
-  const mutation = useMutation({
-    mutationFn: async (data: InsertContact) => {
-      // Send to Owner / Admin
-      await emailjs.send(
-        "service_rurkz08", // your EmailJS service
-        "template_4oyt5sy", // template ID for admin
-        {
-          from_name: data.name,
-          from_email: data.email,
-          phone: data.phone,
-          service: data.service,
-          message: data.message,
-          time: new Date().toLocaleString(),
-        },
-        "Ifo372NS6WImdWQkL"
-      );
-
-      // Send Thank-You to User
-      await emailjs.send(
-        "service_rurkz08", // same service
-        "template_cthhd9y", // template ID for thank-you email
-        {
-          from_name: data.name,
-          from_email: data.email,
-          service: data.service,
-        },
-        "Ifo372NS6WImdWQkL"
-      );
-
-      // Optionally return something if needed
-      return { success: true };
-    },
-
-    onSuccess: () => {
-      toast({
-        title: "Message Sent!",
-        description:
-          "Thank you for contacting us. We'll get back to you shortly.",
-      });
-      form.reset();
-    },
-
-    onError: (error) => {
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
-      console.error("EmailJS Error:", error);
-    },
-  });
-
-  // Hook into form submit
-  const onSubmit = (data: InsertContact) => {
-    mutation.mutate(data);
-  };
-
   return (
     <section
       id="contact"
@@ -179,9 +121,22 @@ export function ContactSection() {
             <h3 className="text-2xl font-bold mb-6">Send us a Message</h3>
             <Form {...form}>
               <form
-                onSubmit={form.handleSubmit(onSubmit)}
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                onSubmit={form.handleSubmit(() => {
+                  toast({
+                    title: "Message Sent!",
+                    description: "Thank you for contacting us. We'll get back to you shortly.",
+                  });
+                  form.reset();
+                })}
                 className="space-y-5"
               >
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="bot-field" />
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
@@ -289,21 +244,11 @@ export function ContactSection() {
                 <Button
                   type="submit"
                   size="lg"
-                  disabled={mutation.isPending}
                   className="w-full bg-gradient-to-r from-[#f17026] to-[#e65d10] text-white border-0"
                   data-testid="button-submit-contact"
                 >
-                  {mutation.isPending ? (
-                    <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="mr-2 h-5 w-5" />
-                      Send Message
-                    </>
-                  )}
+                  <Send className="mr-2 h-5 w-5" />
+                    Send Message
                 </Button>
               </form>
             </Form>
