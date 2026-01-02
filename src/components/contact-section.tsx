@@ -114,7 +114,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-20 md:py-28 relative"
+      className="relative py-20 md:py-28"
       data-testid="section-contact"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -122,26 +122,26 @@ export function ContactSection() {
         <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-[#004aad]/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-on-scroll">
+      <div className="relative z-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="mb-16 text-center animate-on-scroll">
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#f17026]/10 text-[#f17026] text-sm font-medium mb-4">
             Get In Touch
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
             Let's Start a <span className="text-[#004aad]">Project</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
             Ready to bring your ideas to life? Get in touch with us and let's
             discuss how we can help transform your digital presence.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
           <Card
-            className="animate-on-scroll p-6 md:p-8 bg-card border-card-border"
+            className="p-6 animate-on-scroll md:p-8 bg-card border-card-border"
             data-testid="card-contact-form"
           >
-            <h3 className="text-2xl font-bold mb-6">Send us a Message</h3>
+            <h3 className="mb-6 text-2xl font-bold">Send us a Message</h3>
             <Form {...form}>
               <form
                 name="contact"
@@ -154,7 +154,7 @@ export function ContactSection() {
                 <input type="hidden" name="form-name" value="contact" />
                 <input type="hidden" name="bot-field" />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <FormField
                     control={form.control}
                     name="name"
@@ -162,16 +162,13 @@ export function ContactSection() {
                       <FormItem>
                         <FormLabel>Name</FormLabel>
                         <FormControl>
-                          <Input
-                            placeholder="Your name"
-                            data-testid="input-name"
-                            {...field}
-                          />
+                          <Input placeholder="Your name" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
+
                   <FormField
                     control={form.control}
                     name="email"
@@ -182,7 +179,6 @@ export function ContactSection() {
                           <Input
                             type="email"
                             placeholder="your@email.com"
-                            data-testid="input-email"
                             {...field}
                           />
                         </FormControl>
@@ -192,7 +188,7 @@ export function ContactSection() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <FormField
                     control={form.control}
                     name="phone"
@@ -200,16 +196,13 @@ export function ContactSection() {
                       <FormItem>
                         <FormLabel>Phone (Optional)</FormLabel>
                         <FormControl>
-                          <Input
-                            placeholder="+92 XXX XXXXXXX"
-                            data-testid="input-phone"
-                            {...field}
-                          />
+                          <Input placeholder="+92 XXX XXXXXXX" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
+
                   <FormField
                     control={form.control}
                     name="service"
@@ -221,7 +214,7 @@ export function ContactSection() {
                           value={field.value}
                         >
                           <FormControl>
-                            <SelectTrigger data-testid="select-service">
+                            <SelectTrigger>
                               <SelectValue placeholder="Select a service" />
                             </SelectTrigger>
                           </FormControl>
@@ -233,6 +226,14 @@ export function ContactSection() {
                             ))}
                           </SelectContent>
                         </Select>
+
+                        {/* ✅ Hidden input to submit service for Netlify */}
+                        <input
+                          type="hidden"
+                          name="service"
+                          value={form.watch("service")}
+                        />
+
                         <FormMessage />
                       </FormItem>
                     )}
@@ -248,8 +249,6 @@ export function ContactSection() {
                       <FormControl>
                         <Textarea
                           placeholder="Tell us about your project..."
-                          className="min-h-[120px] resize-none"
-                          data-testid="input-message"
                           {...field}
                         />
                       </FormControl>
@@ -262,21 +261,20 @@ export function ContactSection() {
                   type="submit"
                   size="lg"
                   className="w-full bg-gradient-to-r from-[#f17026] to-[#e65d10] text-white border-0"
-                  data-testid="button-submit-contact"
                 >
-                  <Send className="mr-2 h-5 w-5" />
+                  <Send className="w-5 h-5 mr-2" />
                   Send Message
                 </Button>
               </form>
             </Form>
           </Card>
 
-          <div className="animate-on-scroll space-y-6">
+          <div className="space-y-6 animate-on-scroll">
             <Card
               className="p-6 md:p-8 bg-card border-card-border"
               data-testid="card-contact-info"
             >
-              <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+              <h3 className="mb-6 text-2xl font-bold">Contact Information</h3>
               <div className="space-y-6">
                 {contactInfo.map((item, index) => (
                   <div key={index} className="flex items-start gap-4">
@@ -284,7 +282,7 @@ export function ContactSection() {
                       <item.icon className="w-5 h-5 text-[#f17026]" />
                     </div>
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">
+                      <div className="mb-1 text-sm text-muted-foreground">
                         {item.label}
                       </div>
                       {item.href ? (
@@ -308,8 +306,8 @@ export function ContactSection() {
               className="p-6 md:p-8 bg-card border-card-border"
               data-testid="card-social-links"
             >
-              <h3 className="text-xl font-bold mb-4">Follow Us</h3>
-              <p className="text-muted-foreground text-sm mb-4">
+              <h3 className="mb-4 text-xl font-bold">Follow Us</h3>
+              <p className="mb-4 text-sm text-muted-foreground">
                 Stay connected and follow us on social media for updates and
                 news.
               </p>
