@@ -68,6 +68,21 @@ export default function Landing() {
         <TestimonialsSection />
         <SocialSection />
         <ContactSection />
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          hidden
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <input type="text" name="phone" />
+          <input type="text" name="service" />
+          <textarea name="message"></textarea>
+        </form>
+
         <CTASection />
       </main>
       <Footer />
