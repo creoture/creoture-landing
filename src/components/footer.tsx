@@ -1,4 +1,4 @@
-import { SiFacebook, SiInstagram, SiThreads } from "react-icons/si";
+import { SiFacebook, SiInstagram, SiLinkedin, SiThreads } from "react-icons/si";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const navLinks = [
@@ -26,6 +26,11 @@ const socialLinks = [
     icon: SiThreads,
     url: "https://www.threads.net/@creoture.tech",
   },
+  {
+    name: "LinkedIn",
+    icon: SiLinkedin,
+    url: "https://www.linkedin.com/company/creoture/",
+  },
 ];
 
 export function Footer() {
@@ -38,11 +43,11 @@ export function Footer() {
 
   return (
     <footer
-      className="bg-card/50 border-t border-border pt-16 pb-8"
+      className="pt-16 pb-8 border-t bg-card/50 border-border"
       data-testid="footer"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 mb-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           <div className="lg:col-span-1">
             <a
               href="#"
@@ -55,17 +60,17 @@ export function Footer() {
             >
               <img src="/logo.png" alt="Creoture Smart Solutions Crafted for Tomorrow" />
             </a>
-            <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+            <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
               Smart Solutions. Crafted for Tomorrow.
             </p>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-sm leading-relaxed text-muted-foreground">
               Your trusted partner for premium software and digital solutions
               that drive growth and success.
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <h4 className="mb-4 font-semibold">Quick Links</h4>
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -82,7 +87,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Contact Info</h4>
+            <h4 className="mb-4 font-semibold">Contact Info</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-[#f17026] flex-shrink-0 mt-0.5" />
@@ -106,7 +111,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#f17026] flex-shrink-0 mt-0.5" />
-                <span className="text-muted-foreground text-sm">
+                <span className="text-sm text-muted-foreground">
                   Drigh Road, Karachi
                 </span>
               </li>
@@ -114,8 +119,8 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Follow Us</h4>
-            <p className="text-muted-foreground text-sm mb-4">
+            <h4 className="mb-4 font-semibold">Follow Us</h4>
+            <p className="mb-4 text-sm text-muted-foreground">
               Stay connected on social media
             </p>
             <div className="flex items-center gap-3">
@@ -136,12 +141,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-border pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-muted-foreground text-sm text-center md:text-left">
+        <div className="pt-8 border-t border-border">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <p className="text-sm text-center text-muted-foreground md:text-left">
               © {new Date().getFullYear()} Creoture. All rights reserved.
             </p>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-sm text-muted-foreground">
               Crafting digital excellence
             </p>
           </div>

@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,9 +21,8 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
-import { apiRequest } from "@/lib/queryClient";
-import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
-import { SiFacebook, SiInstagram, SiThreads } from "react-icons/si";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { SiFacebook, SiInstagram, SiLinkedin, SiThreads } from "react-icons/si";
 
 const services = [
   "Website Design & Development",
@@ -72,6 +70,11 @@ const socialLinks = [
     icon: SiThreads,
     url: "https://www.threads.net/@creoture.tech",
   },
+  {
+    name: "LinkedIn",
+    icon: SiLinkedin,
+    url: "https://www.linkedin.com/company/creoture/",
+  },
 ];
 
 export function ContactSection() {
@@ -89,25 +92,32 @@ export function ContactSection() {
   });
 
   const onSubmit = async (data: InsertContact) => {
-    const formData = new FormData();
-    formData.append("form-name", "contact");
-
-    // Append all fields
-    Object.keys(data).forEach((key) => {
-      const value = data[key as keyof InsertContact] || "";
-      formData.append(key, value);
-    });
-
     try {
-      await fetch("/", { method: "POST", body: formData });
+      const formData = new FormData();
+      formData.append("form-name", "contact");
+
+      Object.entries(data).forEach(([key, value]) => {
+        formData.append(key, value || "");
+      });
+
+      await fetch("/", {
+        method: "POST",
+        body: formData,
+      });
+
       toast({
         title: "Message Sent!",
         description:
           "Thank you for contacting us. We'll get back to you shortly.",
       });
+
       form.reset();
-    } catch (error) {
-      toast({ title: "Error", description: "Something went wrong." });
+    } catch {
+      toast({
+        title: "Submission Failed",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
     }
   };
 
@@ -117,6 +127,15 @@ export function ContactSection() {
       className="relative py-20 md:py-28"
       data-testid="section-contact"
     >
+      <form name="contact" method="POST" data-netlify="true" hidden>
+        <input type="hidden" name="form-name" value="contact" />
+        <input name="name" />
+        <input name="email" />
+        <input name="phone" />
+        <input name="service" />
+        <textarea name="message"></textarea>
+      </form>
+
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#f17026]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-[#004aad]/5 rounded-full blur-3xl" />
@@ -143,17 +162,7 @@ export function ContactSection() {
           >
             <h3 className="mb-6 text-2xl font-bold">Send us a Message</h3>
             <Form {...form}>
-              <form
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-5"
-              >
-                <input type="hidden" name="form-name" value="contact" />
-                <input type="hidden" name="bot-field" />
-
+              <form onSubmit={form.handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <FormField
                     control={form.control}
@@ -260,7 +269,7 @@ export function ContactSection() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-gradient-to-r from-[#f17026] to-[#e65d10] text-white border-0"
+                  className="w-full bg-gradient-to-r from-[#f17026] to-[#e65d10] text-white border-0 mt-3"
                 >
                   <Send className="w-5 h-5 mr-2" />
                   Send Message

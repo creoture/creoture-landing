@@ -5,21 +5,39 @@ import { ExternalLink } from "lucide-react";
 const projects = [
   {
     title: "Specialty Septic Website",
-    category: "Wordpress",
+    category: "WordPress",
     description:
-      "Developed and designed the Specialty Septic website, showcasing their professional septic system and underground utility services with a clean, user-friendly interface.",
-    tags: ["Wordpress", "PHP", "MySQL", "Plugins"],
+      "Developed and designed the Specialty Septic website to showcase septic system installation, septic-to-sewer conversions, underground utilities, and site preparation services with a clean, user-friendly interface.",
+    tags: ["WordPress", "PHP", "MySQL", "Plugins"],
     color: "from-[#f17026]/20 to-[#004aad]/20",
     link: "https://www.specialtyseptic.com/"
   },
   {
-    title: "Sehet.Pk Business Dashboard",
+    title: "Sehet.pk Website",
     category: "Custom Application",
     description:
-      "Developed a complete business dashboard solution for Sehet.Pk, providing clear insights and organized control over business processes.",
-    tags: ["PHP", "MYSQL", "JS", "Bootstrap"],
+      "Developed the public-facing Sehet.pk healthcare website using Laravel and Livewire, presenting services with a modern, responsive UI focused on performance, scalability, and user trust.",
+    tags: ["Laravel", "PHP", "MySQL", "Livewire", "JavaScript", "Tailwind CSS"],
+    color: "from-[#004aad]/20 to-[#f17026]/20",
+    link: "https://sehet.pk/"
+  },
+  {
+    title: "Sehet.pk Business Dashboard",
+    category: "Custom Application",
+    description:
+      "Built a private, role-based internal dashboard for Sehet.pk staff to manage services, patients, vendors, transactions, expenses, recoveries, reports, and automated billing with unique IPP and bill numbers.",
+    tags: ["PHP", "MySQL", "JavaScript", "Bootstrap"],
     color: "from-[#004aad]/20 to-[#f17026]/20",
     link: ""
+  },
+  {
+    title: "Osaka Auto Traders Website",
+    category: "WordPress",
+    description:
+      "Designed and developed the Osaka Auto Traders website on WordPress to showcase used vehicles with a professional layout, clear listings, and a user-friendly browsing experience.",
+    tags: ["WordPress", "PHP", "MySQL", "Plugins"],
+    color: "from-[#f17026]/20 to-[#004aad]/20",
+    link: "https://test.osakaautotraders.co.uk/"
   },
 ];
 
@@ -27,7 +45,7 @@ export function PortfolioSection() {
   return (
     <section
       id="portfolio"
-      className="py-20 md:py-28 bg-card/30 relative"
+      className="relative py-20 md:py-28 bg-card/30"
       data-testid="section-portfolio"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -35,39 +53,39 @@ export function PortfolioSection() {
         <div className="absolute bottom-1/4 left-0 w-72 h-72 bg-[#004aad]/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-on-scroll">
+      <div className="relative z-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="mb-16 text-center animate-on-scroll">
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#004aad]/10 text-[#004aad] text-sm font-medium mb-4">
             Our Work
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
             Featured <span className="text-[#f17026]">Projects</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
             A showcase of our recent work demonstrating our expertise across
             different industries and technologies.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 stagger-children">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 stagger-children">
           {projects.map((project, index) => (
             <Card
               key={index}
               className="stagger-item group overflow-hidden bg-card border-card-border hover:border-[#f17026]/30 transition-all duration-300"
               data-testid={`card-project-${index}`}
             >
-              <a href={project.link ?? "#"} target="_blank">
+              <a href={project.link ?? "javascript:void(0)"} target={project.link ? "_blank" : "_self"} rel="noopener noreferrer">
                 <div
                   className={`h-48 bg-gradient-to-br ${project.color} flex items-center justify-center relative overflow-hidden`}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-50" />
-                  <div className="relative z-10 text-center px-6">
-                    <div className="w-16 h-16 rounded-full bg-background/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                  <div className="absolute inset-0 opacity-50 bg-gradient-to-t from-card to-transparent" />
+                  <div className="relative z-10 px-6 text-center">
+                    <div className="flex items-center justify-center w-16 h-16 mx-auto mb-3 transition-transform duration-300 rounded-full bg-background/20 backdrop-blur-sm group-hover:scale-110">
                       <ExternalLink className="w-7 h-7 text-foreground" />
                     </div>
                     <Badge
                       variant="secondary"
-                      className="bg-background/20 backdrop-blur-sm border-0"
+                      className="border-0 bg-background/20 backdrop-blur-sm"
                     >
                       {project.category}
                     </Badge>
@@ -77,7 +95,7 @@ export function PortfolioSection() {
                   <h3 className="text-xl font-semibold mb-2 group-hover:text-[#f17026] transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                  <p className="mb-4 text-sm text-muted-foreground line-clamp-2">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
