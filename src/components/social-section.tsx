@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { SiFacebook, SiInstagram, SiThreads } from "react-icons/si";
+import { SiFacebook, SiInstagram, SiLinkedin, SiThreads } from "react-icons/si";
 
 const socialLinks = [
   {
@@ -24,12 +24,19 @@ const socialLinks = [
     description: "Join the conversation and share ideas",
     color: "#000000",
   },
+  {
+    name: "LinkedIn",
+    icon: SiLinkedin,
+    url: "https://www.linkedin.com/company/creoture/",
+    description: "Connect with us for professional updates",
+    color: "#0077B5",
+  },
 ];
 
 export function SocialSection() {
   return (
     <section
-      className="py-20 md:py-28 bg-card/30 relative"
+      className="relative py-20 md:py-28 bg-card/30"
       data-testid="section-social"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -37,21 +44,21 @@ export function SocialSection() {
         <div className="absolute bottom-1/3 left-0 w-72 h-72 bg-[#004aad]/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-on-scroll">
+      <div className="relative z-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="mb-16 text-center animate-on-scroll">
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#004aad]/10 text-[#004aad] text-sm font-medium mb-4">
             Connect With Us
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
             Follow Our <span className="text-[#f17026]">Journey</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
             Stay updated with our latest projects, industry insights, and
             company news. Connect with us on social media.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-4 stagger-children">
           {socialLinks.map((social, index) => (
             <Card
               key={index}
@@ -64,8 +71,8 @@ export function SocialSection() {
                   style={{ color: social.color }}
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-2">{social.name}</h3>
-              <p className="text-muted-foreground text-sm mb-4">
+              <h3 className="mb-2 text-xl font-semibold">{social.name}</h3>
+              <p className="mb-4 text-sm text-muted-foreground">
                 {social.description}
               </p>
               <Button
