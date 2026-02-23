@@ -2,14 +2,15 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Star, Quote } from "lucide-react";
 
+
 const testimonials = [
   {
-    name: "Ahmed Hassan",
-    role: "CEO, TechVenture Solutions",
+    name: "Yousuf Razzak",
+    role: "CEO, Sehet.pk",
     content:
-      "Creoture transformed our outdated website into a modern, high-converting platform. Their attention to detail and commitment to excellence is unmatched. The team delivered beyond our expectations.",
-    rating: 5,
-    initials: "AH",
+      "I had a great experience working with Creoture for my website. Their team was very professional, responsive, and supportive throughout the whole process. They understood my requirements clearly and delivered exactly what I was looking for. The quality of their work and their attention to detail really impressed me. I would definitely recommend Creoture to anyone looking for reliable and efficient website services.",
+    rating: 4,
+    initials: "YR",
   },
   {
     name: "Sara Khan",
@@ -33,7 +34,7 @@ export function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="py-20 md:py-28 relative"
+      className="relative py-20 md:py-28"
       data-testid="section-testimonials"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -41,21 +42,21 @@ export function TestimonialsSection() {
         <div className="absolute bottom-0 right-1/3 w-72 h-72 bg-[#f17026]/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-on-scroll">
+      <div className="relative z-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="mb-16 text-center animate-on-scroll">
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#f17026]/10 text-[#f17026] text-sm font-medium mb-4">
             Testimonials
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
             What Our <span className="text-[#004aad]">Clients Say</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
             Don't just take our word for it. Here's what our clients have to
             say about working with Creoture.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 stagger-children">
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
@@ -71,7 +72,7 @@ export function TestimonialsSection() {
                   />
                 ))}
               </div>
-              <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
+              <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
                 "{testimonial.content}"
               </p>
               <div className="flex items-center gap-3">
