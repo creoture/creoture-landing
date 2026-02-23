@@ -4,6 +4,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import emailjs from "@emailjs/browser";
+
 import {
   Form,
   FormControl,
@@ -93,17 +95,22 @@ export function ContactSection() {
 
   const onSubmit = async (data: InsertContact) => {
     try {
-      const formData = new FormData();
-      formData.append("form-name", "contact");
+      const VITE_EMAILJS_SERVICE_ID = "service_rurkz08";
+      const VITE_EMAILJS_TEMPLATE_ID = "template_4oyt5sy";
+      const VITE_EMAILJS_PUBLIC_KEY = "cHetsG0e-Uw7hj3-A";
 
-      Object.entries(data).forEach(([key, value]) => {
-        formData.append(key, value || "");
-      });
-
-      await fetch("/", {
-        method: "POST",
-        body: formData,
-      });
+      await emailjs.send(
+        VITE_EMAILJS_SERVICE_ID,
+        VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          service: data.service,
+          message: data.message,
+        },
+        VITE_EMAILJS_PUBLIC_KEY,
+      );
 
       toast({
         title: "Message Sent!",
@@ -112,10 +119,11 @@ export function ContactSection() {
       });
 
       form.reset();
-    } catch {
+    } catch (error) {
+      console.error(error);
       toast({
         title: "Submission Failed",
-        description: "Please try again later.",
+        description: "Something went wrong. Please try again later.",
         variant: "destructive",
       });
     }
@@ -127,15 +135,6 @@ export function ContactSection() {
       className="relative py-20 md:py-28"
       data-testid="section-contact"
     >
-      <form name="contact" method="POST" data-netlify="true" hidden>
-        <input type="hidden" name="form-name" value="contact" />
-        <input name="name" />
-        <input name="email" />
-        <input name="phone" />
-        <input name="service" />
-        <textarea name="message"></textarea>
-      </form>
-
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#f17026]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-[#004aad]/5 rounded-full blur-3xl" />
