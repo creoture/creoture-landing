@@ -144,7 +144,7 @@ export function Footer() {
         <div className="pt-8 border-t border-border">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-sm text-center text-muted-foreground md:text-left">
-              © {new Date().getFullYear()} Creoture. All rights reserved.
+              © {new Date().getFullYear()} Creoture by Ahmed Raza. All rights reserved.
             </p>
             <p className="text-sm text-muted-foreground">
               Crafting digital excellence

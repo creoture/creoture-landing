@@ -13,10 +13,10 @@ const testimonials = [
     initials: "YR",
   },
   {
-    name: "Sara Khan",
-    role: "Founder, StyleHub Boutique",
+    name: "Saqib Khan",
+    role: "AKC DIGITIZING",
     content:
-      "Working with Creoture was a game-changer for our e-commerce business. They built us a beautiful online store that's easy to manage and our sales have increased by 150% since launch.",
+      "Creoture did an amazing job helping us with our website! The entire process was smooth, fast, and incredibly efficient. They delivered everything in a short time without compromising on quality. Truly a professional team that makes complex tasks seem effortless. Highly recommend! Bryan",
     rating: 5,
     initials: "SK",
   },
