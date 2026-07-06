@@ -4,7 +4,6 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import emailjs from "@emailjs/browser";
 
 import {
   Form,
@@ -93,37 +92,40 @@ export function ContactSection() {
     },
   });
 
-  const onSubmit = async (data: InsertContact) => {
+  const onSubmit = (data: InsertContact) => {
     try {
-      const VITE_EMAILJS_SERVICE_ID = "service_rurkz08";
-      const VITE_EMAILJS_TEMPLATE_ID = "template_4oyt5sy";
-      const VITE_EMAILJS_PUBLIC_KEY = "cHetsG0e-Uw7hj3-A";
+      const whatsappNumber = "923245856347"; // Your WhatsApp number without +
 
-      await emailjs.send(
-        VITE_EMAILJS_SERVICE_ID,
-        VITE_EMAILJS_TEMPLATE_ID,
-        {
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          service: data.service,
-          message: data.message,
-        },
-        VITE_EMAILJS_PUBLIC_KEY,
-      );
+      const message = `
+        New Contact Form Submission
+
+        Name: ${data.name}
+        Email: ${data.email}
+        Phone: ${data.phone}
+        Service: ${data.service}
+
+        Message:
+        ${data.message}
+      `;
+
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+        message,
+      )}`;
+
+      window.open(whatsappUrl, "_blank");
 
       toast({
-        title: "Message Sent!",
-        description:
-          "Thank you for contacting us. We'll get back to you shortly.",
+        title: "Redirecting to WhatsApp",
+        description: "Please send the message in WhatsApp.",
       });
 
       form.reset();
     } catch (error) {
       console.error(error);
+
       toast({
         title: "Submission Failed",
-        description: "Something went wrong. Please try again later.",
+        description: "Unable to open WhatsApp.",
         variant: "destructive",
       });
     }
