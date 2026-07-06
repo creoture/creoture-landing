@@ -118,11 +118,11 @@ export function HeroSection() {
 
         <div className="hero-stats flex flex-wrap items-center justify-center gap-8 md:gap-16">
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-[#f17026]">5+</div>
+            <div className="text-3xl md:text-4xl font-bold text-[#f17026]">6+</div>
             <div className="text-sm text-muted-foreground">Projects Delivered</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-[#004aad]">5+</div>
+            <div className="text-3xl md:text-4xl font-bold text-[#004aad]">6+</div>
             <div className="text-sm text-muted-foreground">Happy Clients</div>
           </div>
           <div className="text-center">

@@ -21,12 +21,12 @@ const testimonials = [
     initials: "SK",
   },
   {
-    name: "Michael Chen",
-    role: "Marketing Director, GlobalTech Inc",
+    name: "Anas Ali",
+    role: "Co-Founder, AutoVinCops",
     content:
-      "The branding work Creoture did for us was exceptional. They captured our company's vision perfectly and created a cohesive brand identity that resonates with our target audience.",
+      "I had a great experience with Creoture for developing my AutoVinCoops website. The entire process was smooth, and they delivered the website on time with a clean and professional design. A special thanks to Ahmed, who handled the development. He was responsive, professional, and made sure every requirement was implemented perfectly. I'm very happy with the final result and would definitely recommend Creoture to anyone looking for quality web development services.",
     rating: 5,
-    initials: "MC",
+    initials: "AA",
   },
 ];
 
@@ -60,21 +60,23 @@ export function TestimonialsSection() {
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="stagger-item p-6 bg-card border-card-border hover:border-[#f17026]/30 transition-all duration-300 relative"
+              className="flex flex-col justify-between stagger-item p-6 bg-card border-card-border hover:border-[#f17026]/30 transition-all duration-300 relative "
               data-testid={`card-testimonial-${index}`}
             >
-              <Quote className="absolute top-4 right-4 w-8 h-8 text-[#f17026]/20" />
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-4 h-4 fill-[#f17026] text-[#f17026]"
-                  />
-                ))}
+              <div>
+                <Quote className="absolute top-4 right-4 w-8 h-8 text-[#f17026]/20" />
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-4 h-4 fill-[#f17026] text-[#f17026]"
+                    />
+                  ))}
+                </div>
+                <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
+                  {testimonial.content}
+                </p>
               </div>
-              <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-                "{testimonial.content}"
-              </p>
               <div className="flex items-center gap-3">
                 <Avatar className="w-12 h-12 border-2 border-[#004aad]/20">
                   <AvatarFallback className="bg-gradient-to-br from-[#f17026]/20 to-[#004aad]/20 text-foreground font-semibold">

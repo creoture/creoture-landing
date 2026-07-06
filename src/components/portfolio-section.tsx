@@ -31,6 +31,40 @@ const projects = [
     link: ""
   },
   {
+    title: "Biocare Innovat Website",
+    category: "WordPress",
+    description:
+      "Designed and developed a professional WooCommerce eCommerce website for Biocare Innovat, a USA-based vaccine supplier. The website features a modern and mobile-friendly design, secure product catalog, Bitcoin payment integration, responsive layouts, and an optimized shopping experience for customers across all devices.",
+    tags: [
+      "WordPress",
+      "E-commerce",
+      "PHP",
+      "MySQL",
+      "Bitcoin Payments",
+      "Responsive Design",
+    ],
+    color: "from-[#f17026]/20 to-[#004aad]/20",
+    link: "https://biocareinnovat.wpenginepowered.com/"
+  },
+  {
+    title: "AutoVinCops",
+    category: "WordPress",
+    description:
+      "Designed and developed a professional WordPress website for AutoVinCops, a USA-based vehicle history report service. Built with WooCommerce and integrated with Polar.sh for secure plan-based payments. The website offers multiple report packages, a responsive mobile-friendly design, optimized user experience, and a streamlined purchasing process for customers seeking instant vehicle history reports.",
+    tags: [
+      "WordPress",
+      "WooCommerce",
+      "PHP",
+      "MySQL",
+      "Polar.sh",
+      "Payment Integration",
+      "Responsive Design",
+      "E-commerce"
+    ],
+    color: "from-[#f17026]/20 to-[#004aad]/20",
+    link: "http://autovincops.com/"
+  },
+  {
     title: "Osaka Auto Traders Website",
     category: "WordPress",
     description:
