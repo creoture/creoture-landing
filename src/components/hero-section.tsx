@@ -60,7 +60,7 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden min-[300px]:mt-28 min-[450px]:mt-16 sm:mt-0"
+      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden min-[300px]:mt-28 min-[450px]:mt-16"
       data-testid="section-hero"
     >
       <div className="absolute inset-0 overflow-hidden">
@@ -118,11 +118,11 @@ export function HeroSection() {
 
         <div className="hero-stats flex flex-wrap items-center justify-center gap-8 md:gap-16">
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-[#f17026]">6+</div>
+            <div className="text-3xl md:text-4xl font-bold text-[#f17026]">7+</div>
             <div className="text-sm text-muted-foreground">Projects Delivered</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-[#004aad]">6+</div>
+            <div className="text-3xl md:text-4xl font-bold text-[#004aad]">7+</div>
             <div className="text-sm text-muted-foreground">Happy Clients</div>
           </div>
           <div className="text-center">
@@ -130,13 +130,13 @@ export function HeroSection() {
             <div className="text-sm text-muted-foreground">Years Experience</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-[#004aad]">100%</div>
+            <div className="text-3xl md:text-4xl font-bold text-[#004aad]">99%</div>
             <div className="text-sm text-muted-foreground">Client Satisfaction</div>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 animate-bounce">
         <button
           onClick={() => scrollToSection("#services")}
           className="p-2 rounded-full border border-border hover:border-[#f17026] transition-colors"

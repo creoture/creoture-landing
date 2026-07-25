@@ -14,17 +14,17 @@ const socialLinks = [
   {
     name: "Facebook",
     icon: SiFacebook,
-    url: "https://www.facebook.com/profile.php?id=61578961324032",
+    url: "https://www.facebook.com/creoture.pk",
   },
   {
     name: "Instagram",
     icon: SiInstagram,
-    url: "https://www.instagram.com/creoture.tech/",
+    url: "https://www.instagram.com/creoture.pk",
   },
   {
     name: "Threads",
     icon: SiThreads,
-    url: "https://www.threads.net/@creoture.tech",
+    url: "https://www.threads.net/@creoture.pk",
   },
   {
     name: "LinkedIn",

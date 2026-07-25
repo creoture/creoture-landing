@@ -35,13 +35,12 @@ const projects = [
     category: "WordPress",
     description:
       "Designed and developed a professional WooCommerce eCommerce website for Biocare Innovat, a USA-based vaccine supplier. The website features a modern and mobile-friendly design, secure product catalog, Bitcoin payment integration, responsive layouts, and an optimized shopping experience for customers across all devices.",
-    tags: [
+     tags: [
       "WordPress",
-      "E-commerce",
-      "PHP",
-      "MySQL",
+      "WooCommerce",
       "Bitcoin Payments",
       "Responsive Design",
+      "E-commerce"
     ],
     color: "from-[#f17026]/20 to-[#004aad]/20",
     link: "https://biocareinnovat.wpenginepowered.com/"
@@ -54,12 +53,9 @@ const projects = [
     tags: [
       "WordPress",
       "WooCommerce",
-      "PHP",
-      "MySQL",
       "Polar.sh",
       "Payment Integration",
-      "Responsive Design",
-      "E-commerce"
+      "Responsive Design"
     ],
     color: "from-[#f17026]/20 to-[#004aad]/20",
     link: "http://autovincops.com/"
@@ -72,6 +68,15 @@ const projects = [
     tags: ["WordPress", "PHP", "MySQL", "Plugins"],
     color: "from-[#f17026]/20 to-[#004aad]/20",
     link: "https://test.osakaautotraders.co.uk/"
+  },
+  {
+    title: "SwyftRevenue Medical Billing Website",
+    category: "Laravel",
+    description:
+      "Built a professional medical billing and revenue cycle management website for SwyftRevenue, helping independent healthcare practices showcase their services, improve lead generation, and establish trust through a modern, responsive web experience.",
+    tags: ["Laravel", "PHP", "MySQL", "Livewire", "JavaScript", "Tailwind CSS"],
+    color: "from-[#f17026]/20 to-[#004aad]/20",
+    link: "https://swyftrevenue.com/"
   },
 ];
 
